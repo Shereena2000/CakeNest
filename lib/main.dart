@@ -1,3 +1,4 @@
+import 'package:cake_nest/Features/customer/repository/services/supabase_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -6,7 +7,11 @@ import 'Settings/utils/p_colors.dart';
 import 'Settings/utils/p_pages.dart';
 import 'Settings/utils/p_routes.dart';
 
-void main() {
+void main()async {
+   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize Supabase
+  await SupabaseService().initialize();
   runApp(MultiProvider(providers: providers, child: const MyApp()));
 }
 

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import '../../../Settings/utils/p_text_styles.dart';
 import '../../common_widgets/custom_floating_action_button.dart';
-import '../../product/model/product_model.dart';
 
 class NewSaleScreen extends StatelessWidget {
   const NewSaleScreen({super.key});
