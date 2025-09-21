@@ -1,6 +1,6 @@
 
 
-import '../core/database_helper.dart';
+import '../../../Data/core/database_helper.dart';
 import '../model/outbox_model.dart';
 
 class OutboxRepository {

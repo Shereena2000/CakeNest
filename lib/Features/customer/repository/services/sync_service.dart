@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:sqflite/sqlite_api.dart';
 
-import '../../core/database_helper.dart';
+import '../../../../Data/core/database_helper.dart';
 import '../../model/customer_model.dart';
 import '../customer_repository.dart';
 import '../outbox_repository.dart';

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:sqflite/sqflite.dart';
 import 'package:uuid/uuid.dart';
 
-import '../core/database_helper.dart';
+import '../../../Data/core/database_helper.dart';
 import '../model/customer_model.dart';
 import '../model/outbox_model.dart';
 
