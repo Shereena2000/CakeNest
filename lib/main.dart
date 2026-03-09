@@ -1,4 +1,4 @@
-import 'package:cake_nest/Features/customer/repository/services/supabase_service.dart';
+import 'package:cake_nest/Services/supabase_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -52,22 +52,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// void configLoading() {
-//   EasyLoading.instance
-//     ..loadingStyle = EasyLoadingStyle.custom
-//     ..backgroundColor = Colors.white
-//     ..maskColor = Colors.white
-//     ..indicatorColor = Colors.black
-//     ..userInteractions = false
-//     ..dismissOnTap = false
-//     ..textColor = Colors.transparent
-//     ..contentPadding = const EdgeInsets.all(8)
-//     ..textPadding = EdgeInsets.zero
-//     ..indicatorType = EasyLoadingIndicatorType.ring
-//     ..indicatorSize = 23
-//     ..lineWidth = 2.2
-//     ..radius = 20
-//     ..boxShadow = <BoxShadow>[
-//       const BoxShadow(offset: Offset(2, 2), blurRadius: 10, color: Color.fromRGBO(0, 0, 0, .15)),
-//     ];
-// }

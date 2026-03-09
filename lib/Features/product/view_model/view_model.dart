@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
-import '../../customer/repository/services/sync_service.dart';
+import '../../../Services/sync_service.dart';
 import '../model/product_model.dart';
 import '../repository/product_repository.dart';
 

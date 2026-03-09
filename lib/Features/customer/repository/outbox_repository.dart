@@ -33,25 +33,39 @@ class OutboxRepository {
   }
 
   // Mark outbox item as synced
-  Future<void> markAsSynced(String outboxId) async {
-    final db = await _dbHelper.database;
-    await db.update(
-      'outbox',
-      {'synced': 1, 'updated_at': DateTime.now().toIso8601String()},
-      where: 'id = ?',
-      whereArgs: [outboxId],
-    );
-  }
-
+  // Future<void> markAsSynced(String outboxId) async {
+  //   final db = await _dbHelper.database;
+  //   await db.update(
+  //     'outbox',
+  //     {'synced': 1, 'updated_at': DateTime.now().toIso8601String()},
+  //     where: 'id = ?',
+  //     whereArgs: [outboxId],
+  //   );
+  // }
+Future<void> markAsSynced(String outboxId) async {
+  final db = await _dbHelper.database;
+  await db.update(
+    'outbox',
+    {'synced': 1}, // Remove the updated_at field
+    where: 'id = ?',
+    whereArgs: [outboxId],
+  );
+}
   // Increment retry count
-  Future<void> incrementRetryCount(String outboxId) async {
-    final db = await _dbHelper.database;
-    await db.rawUpdate(
-      'UPDATE outbox SET retry_count = retry_count + 1 WHERE id = ?',
-      [outboxId],
-    );
-  }
-
+  // Future<void> incrementRetryCount(String outboxId) async {
+  //   final db = await _dbHelper.database;
+  //   await db.rawUpdate(
+  //     'UPDATE outbox SET retry_count = retry_count + 1 WHERE id = ?',
+  //     [outboxId],
+  //   );
+  // }
+Future<void> incrementRetryCount(String outboxId) async {
+  final db = await _dbHelper.database;
+  await db.rawUpdate(
+    'UPDATE outbox SET retry_count = retry_count + 1 WHERE id = ?',
+    [outboxId],
+  );
+}
   // Delete outbox item
   Future<void> deleteOutboxItem(String outboxId) async {
     final db = await _dbHelper.database;

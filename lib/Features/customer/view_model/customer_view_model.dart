@@ -4,7 +4,7 @@ import 'package:uuid/uuid.dart';
 
 import '../model/customer_model.dart';
 import '../repository/customer_repository.dart';
-import '../repository/services/sync_service.dart';
+import '../../../Services/sync_service.dart';
 
 class CustomerViewModel extends ChangeNotifier {
   final CustomerRepository _repository = CustomerRepository();

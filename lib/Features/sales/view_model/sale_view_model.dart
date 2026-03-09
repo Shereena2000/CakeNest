@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../Data/core/database_helper.dart';
 import '../../customer/model/customer_model.dart';
 import '../../customer/repository/customer_repository.dart';
-import '../../customer/repository/services/sync_service.dart';
+import '../../../Services/sync_service.dart';
 import '../../product/model/product_model.dart';
 import '../../product/repository/product_repository.dart';
 import '../model/sale_item.dart';
@@ -181,4 +182,36 @@ class SalesViewModel extends ChangeNotifier {
       print('Force sync failed: $e');
     }
   }
+
+  Future<void> debugSalesOutbox() async {
+  print('=== SALES OUTBOX DEBUG ===');
+  
+  try {
+    final db = await DatabaseHelper().database;
+    
+    // Check outbox for sales
+    final salesOutbox = await db.query('outbox', 
+        where: 'table_name = ? AND synced = ?', 
+        whereArgs: ['sales', 0]);
+    
+    print('Unsynced sales in outbox: ${salesOutbox.length}');
+    
+    for (var item in salesOutbox) {
+      print('Sale outbox item:');
+      print('- ID: ${item['id']}');
+      print('- Action: ${item['action']}');
+      print('- Record ID: ${item['record_id']}');
+      print('- Retry count: ${item['retry_count']}');
+      print('- Data preview: ${(item['data'] as String).substring(0, 100)}...');
+      print('---');
+    }
+    
+    // Check actual sales table
+    final salesInDb = await db.query('sales', where: 'synced = ?', whereArgs: [0]);
+    print('Unsynced sales in sales table: ${salesInDb.length}');
+    
+  } catch (e) {
+    print('Debug failed: $e');
+  }
+}
 }

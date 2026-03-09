@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../customer/repository/services/sync_service.dart';
+import '../../../Services/sync_service.dart';
 import '../../product/model/product_model.dart';
 import '../../product/repository/product_repository.dart';
 import '../../sales/repository/sales_repository.dart';
